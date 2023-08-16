@@ -1,0 +1,77 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" >
+   <img src="/assets/log1.png" class="logo" alt="Logo">
+   Talky
+ </a>
+
+
+
+ <div class="navbar-nav">
+   <div class="nav-item text-nowrap">
+     <div class="avatar-container" *ngIf="imageUrl">
+       <img [src]="imageUrl" alt="Avatar" class="avatar-img">
+     </div>
+ 
+     <div class="user-info">
+       <span style="color: white;">{{userdash?.name}}</span>
+       <span><div class="btn-group me-2">
+        
+         <button type="button" id="b2" style="color: white; margin-left: 20px;" class="btn btn-sm btn-outline-secondary" routerLink="/add-profileimage">Change Profile Photo</button>
+       
+       </div></span>
+       <button class="btn btn-outline-secondary" style="color: white; margin-left: 20px;" type="button" (click)="logout()">Logout</button>
+     </div>
+   </div>
+ </div>
+ 
+
+</header>
+
+<main class="col-md-9 ms-sm-auto col-lg-12 px-md-4"  >
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+      
+  </div>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> 
+
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-4">
+        <div class="card chat-app">
+          <section>
+            
+            
+            <div id="plist" class="people-list">
+              
+            <div class="input-group user-section">
+             
+              <button type="button" id="b1" class="btn btn-sm btn-outline-secondary add-friend-btn" routerLink="/addfriend/{{userdash?._id}}">
+                <i class="fas fa-user-plus"></i>
+                Add Friend
+              </button>
+            </div>
+              <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let item of userdash?.friends;let i = index">
+                <a (click)="chathead(item._id)">
+                  <li class="clearfix">
+                  
+                    <img src="https://www.nic.in/wp-content/uploads/2021/12/chatbot.png" alt="avatar">
+                    <div class="about">
+                      <div class="name"  style="color: aliceblue;"  >{{ item.username }}</div>
+                      <div class="status"><i class="fa fa-circle " [ngStyle]="{'color': statusArray[i] === 'online' ? '#198754' : '#dc3545'}" ></i> <span  style="color: white;">{{statusArray[i]}}</span> </div>
+                    </div>
+                  </li>
+                </a>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>

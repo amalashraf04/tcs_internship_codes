@@ -1,0 +1,72 @@
+<style>
+	body {
+	  background-image: url('../../assets/bg2.jpg');
+	  background-repeat: no-repeat;
+	  background-position: center center;
+	  background-size: cover;
+	  /* Add any other styles you want for the body */
+	}
+  </style>
+<body>
+
+	<section>
+  
+	  <div class="form-box">
+  
+		<div class="form-value">
+  
+		  <form [formGroup]="loginform">
+  
+			<h2>Login</h2>
+			<label>Email</label>
+			<div class="inputbox">
+  
+				
+  
+			  <input id="user" type="email" class="input"  placeholder="Enter your email"
+                    formControlName="email"[ngClass]="{'is-invalid':login.email.errors && (login.email.touched || login.email.dirty)}" >
+                    <div *ngIf="login.email.errors && (login.email.touched || login.email.dirty)"  class="invalid-feedback" >
+                    <p *ngIf="login.email.errors.required" >Field can't be empty</p>
+                    <p  *ngIf="login.email.errors.email">Not a Valid Format</p>
+                    </div>
+  
+			  
+			  
+			</div>
+			<label>Password</label>
+			<div class="inputbox">
+  
+			  <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
+  
+			  <input id="pass" type="password" class="input"  placeholder="Enter your password"
+                    formControlName="password" [ngClass]="{'is-invalid':login.password.errors && (login.password.touched || login.password.dirty)}" >
+                    <div  *ngIf="login.password.errors && ( login.password.touched || login.password.dirty)" class="invalid-feedback">
+                        <p *ngIf="login.password.errors.required" >Field can't be empty</p>
+                        <p  *ngIf="login.password.errors.minlength">Requires minimum length of 6</p>
+                    </div>
+
+  
+			  
+  
+			</div>
+  
+			
+  
+			<input type="submit" class="button" value="Log In" (click)="enter()" >
+  
+			<div class="register">
+  
+			  <p>Don't have an account? <a href="signup">Sign Up</a></p>
+  
+			</div>
+  
+		  </form>
+  
+		</div>
+  
+	  </div>
+  
+	</section>
+  
+  
+  </body>
